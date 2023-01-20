@@ -11,10 +11,10 @@
 <body>
     <header class="navbar sticky-top navbar-expand-sm">
         <nav class="container-fluid row">
-            <a href="<?php bloginfo( 'url' );?>" class="site-logo navbar-brand col-3">
-                    <!-- <p class="d-inline-block align-text-top">😼</p> -->
+            <a href="<?php echo bloginfo('url');?>" class="site-logo navbar-brand col-3">
+                
                     <div class="row">
-                        <img src="<?php echo get_theme_mod( 'logo' ); ?>" alt="Site logo" class="col mw-">
+                        <img src="<?php echo ngbt_outputlogo(); ?>" alt="Site logo" class="col mw-">
                         <h1 class ="site-title col"><?php bloginfo( 'name' ); ?></h1>
                     </div>
             </a>

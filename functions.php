@@ -8,14 +8,21 @@ function ngbt_assets(){
 
 add_action("wp_enqueue_scripts","ngbt_assets");
 
-function ngbt_register_custom_logo( $wp_customize ) {
-    // Add a setting for logo upload
-    $wp_customize->add_setting( 'logo' );
-    // Add a control for logo upload
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo', array(
-       'label'    => __( 'Upload logo', 'mytheme' ),
-       'section'  => 'title_tagline',
-       'settings' => 'logo',
-    ) ) );
+function ngbt_register_theme_supports() {
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support('custom-logo',
+        array( 'width' => 100,
+        'height' => 100,
+        'flex-width' => true,
+        'flex-height' => true)
+    );
  }
- add_action( 'customize_register', 'ngbt_register_custom_logo' );
+ add_action( 'customize_register', 'ngbt_register_theme_supports');
+
+ function ngbt_outputlogo(){
+    // Outputs logo URL into an img tag 
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+    $custom_logo_url = wp_get_attachment_image_url( $custom_logo_id , 'full' );
+    return esc_url( $custom_logo_url );
+ }
