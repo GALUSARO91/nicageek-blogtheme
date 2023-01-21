@@ -55,17 +55,32 @@ nav{
     color: var(--letter-light)
 }
 
-.navbarnav{
+.navbarnav ul{
+    width: 100%;
+    display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    padding: 0;
 }
 
 .navbarnav li{
+    display: inline-block;
     list-style-type: none;
     padding: 0 2%
 }
+.navbarnav a{
+    text-decoration: none !important;
+}
+#navbarNav .nav-link{
+    color: var(--letter-light) !important;
+}
 .site-title{
     display: inline-block;
+}
+
+main{
+    width: 80%;
+    margin: 2% auto;
 }
 section h2{
     display: block;

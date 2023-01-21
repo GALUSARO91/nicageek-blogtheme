@@ -24,12 +24,16 @@
             <div class="col-3">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>              
-                <ul class="collapse navbar-collapse navbarnav" id="navbarNav">
-                    <li><a class="nav-link" href="#" >Link 1</a></li>
-                    <li><a class="nav-link" href="#" >Link 2</a></li>
-                    <li><a class="nav-link" href="#" >Link 3</a></li>      
-                </ul>
+                </button>             
+                <?php wp_nav_menu( [
+                    "menu" => "menu-header",
+                    "container" => "",
+                    // "menu_class" => "col-3",
+                    "menu_class" => "collapse navbar-collapse navbarnav",
+                    "menu_id" => "navbarNav",
+                    "link_before" =>'<span class="nav-link">',
+                    "link_after" => "</span>"
+                ] )?> 
             </div>
         </nav>
     </header>

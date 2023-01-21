@@ -17,6 +17,7 @@ function ngbt_register_theme_supports() {
         'flex-width' => true,
         'flex-height' => true)
     );
+    add_theme_support("widgets");
  }
  add_action( 'customize_register', 'ngbt_register_theme_supports');
 
@@ -25,4 +26,8 @@ function ngbt_register_theme_supports() {
     $custom_logo_id = get_theme_mod( 'custom_logo' );
     $custom_logo_url = wp_get_attachment_image_url( $custom_logo_id , 'full' );
     return esc_url( $custom_logo_url );
+ }
+
+ function ngbt_register_menus(){
+    register_nav_menus( ["menu-header"] );
  }
