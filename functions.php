@@ -31,3 +31,45 @@ function ngbt_register_theme_supports() {
  function ngbt_register_menus(){
     register_nav_menus( ["menu-header"] );
  }
+
+ function ngbt_register_footer_sidebars(){
+    // 4 sidebars added to the footer
+    $sidebar1 =[
+        'before_widget' => '<div class="col-6 col-lg-3">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',        
+		'name'=>__( 'Sidebar 1', 'textdomain' ),
+        'id' => 'sidebar-1'	
+    ];
+    $sidebar2 =[
+        'before_widget' => '<div class="col-6 col-lg-3">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',        
+		'name'=>__( 'Sidebar 2', 'textdomain' ),
+        'id' => 'sidebar-2'	
+    ];
+    $sidebar3 =[
+        'before_widget' => '<div class="col-6 col-lg-3">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',        
+		'name'=>__( 'Sidebar 3', 'textdomain' ),
+        'id' => 'sidebar-3'	
+    ];
+    $sidebar4 =[
+        'before_widget' => '<div class="col-6 col-lg-3">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',        
+		'name'=>__( 'Sidebar 4', 'textdomain' ),
+        'id' => 'sidebar-4'	
+    ];
+    register_sidebar($sidebar1);
+    register_sidebar($sidebar2);
+    register_sidebar($sidebar3);
+    register_sidebar($sidebar4);
+ }
+
+ add_action('widgets_init','ngbt_register_footer_sidebars');
