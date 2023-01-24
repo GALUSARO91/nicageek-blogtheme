@@ -28,7 +28,6 @@
                 <?php wp_nav_menu( [
                     "menu" => "menu-header",
                     "container" => "",
-                    // "menu_class" => "col-3",
                     "menu_class" => "collapse navbar-collapse navbarnav",
                     "menu_id" => "navbarNav",
                     "link_before" =>'<span class="nav-link">',

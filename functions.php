@@ -29,38 +29,40 @@ function ngbt_register_theme_supports() {
  }
 
  function ngbt_register_menus(){
-    register_nav_menus( ["menu-header"] );
+    register_nav_menus( ["menu-header" =>"Menu Header"] );
  }
+
+add_action('init','ngbt_register_menus');
 
  function ngbt_register_footer_sidebars(){
     // 4 sidebars added to the footer
     $sidebar1 =[
-        'before_widget' => '<div class="col-6 col-lg-3">',
-		'after_widget' => '</div>',
+        'before_widget' => '',
+		'after_widget' => '',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',        
 		'name'=>__( 'Sidebar 1', 'textdomain' ),
         'id' => 'sidebar-1'	
     ];
     $sidebar2 =[
-        'before_widget' => '<div class="col-6 col-lg-3">',
-		'after_widget' => '</div>',
+        'before_widget' => '',
+		'after_widget' => '',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',        
 		'name'=>__( 'Sidebar 2', 'textdomain' ),
         'id' => 'sidebar-2'	
     ];
     $sidebar3 =[
-        'before_widget' => '<div class="col-6 col-lg-3">',
-		'after_widget' => '</div>',
+        'before_widget' => '',
+		'after_widget' => '',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',        
 		'name'=>__( 'Sidebar 3', 'textdomain' ),
         'id' => 'sidebar-3'	
     ];
     $sidebar4 =[
-        'before_widget' => '<div class="col-6 col-lg-3">',
-		'after_widget' => '</div>',
+        'before_widget' => '',
+		'after_widget' => '',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',        
 		'name'=>__( 'Sidebar 4', 'textdomain' ),
@@ -73,3 +75,14 @@ function ngbt_register_theme_supports() {
  }
 
  add_action('widgets_init','ngbt_register_footer_sidebars');
+
+ function ngbt_add_rating(){
+    $meta_args = [
+        'type' => 'number',
+        'single'=> true,
+        'show_in_rest' => true
+    ];
+    register_post_meta('post','ngbt-rating-values',$meta_args);
+    register_post_meta('post','ngbt-rating-surveys',$meta_args);
+
+ }
