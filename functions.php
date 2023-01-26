@@ -10,7 +10,7 @@ add_action("wp_enqueue_scripts","ngbt_assets");
 
 function ngbt_register_theme_supports() {
     add_theme_support('title-tag');
-    add_theme_support('post-thumbnails');
+    add_theme_support('post-thumbnails',['post','page']);
     add_theme_support('custom-logo',
         array( 'width' => 100,
         'height' => 100,
@@ -20,6 +20,12 @@ function ngbt_register_theme_supports() {
     add_theme_support("widgets");
  }
  add_action( 'customize_register', 'ngbt_register_theme_supports');
+
+function ngbt_add_edit_post_featured_image(){
+    add_post_type_support('post', 'post-thumbnails');
+}
+
+add_action('init','ngbt_add_edit_post_featured_image');
 
  function ngbt_outputlogo(){
     // Outputs logo URL into an img tag 

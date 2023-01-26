@@ -92,6 +92,7 @@
                 </a></li>
             <?php } ;?>
             <?php wp_reset_postdata(); ?>
+            <!-- TODO: Link to all posts info -->
         </ul>
     </section>
 
