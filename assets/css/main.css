@@ -111,6 +111,10 @@ ul{
     border-radius: var(--bs-border-radius);
 }
 
+.comment-form{
+    width: 80% !important;
+    margin: auto !important;
+}
 
 .top-rated li, .all-posts li {
     list-style-type: none;

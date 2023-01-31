@@ -130,12 +130,16 @@ section{
 ul{
     padding: 0
 }
-.top-rated article, .all-posts article, .comment-form{
+.top-rated article, .all-posts article, .comment-form, .comment-section ul{
     border: 1px solid var(--letter-dark);
     color:var(--letter-dark);
     border-radius: var(--bs-border-radius);
 }
 
+.comment-form{
+    width: 80%;
+    margin: auto;
+}
 
 .top-rated li, .all-posts li {
     list-style-type: none;
@@ -173,8 +177,23 @@ footer .row{
     margin:0 auto
 }
 
-footer li{
+footer li, .comment-section li{
     list-style: none;
+}
+
+.comment-section{
+    margin-top: 2%;
+}
+
+.comment-section li{
+    position: relative;
+    display: block;
+    padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+    color: var(--bs-list-group-color);
+    text-decoration: none;
+    background-color: var(--bs-list-group-bg);
+    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+  
 }
 
 @media (max-width: 767.98px) { 
