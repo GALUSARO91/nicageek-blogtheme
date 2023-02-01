@@ -183,6 +183,12 @@ footer li, .comment-section li{
 
 .comment-section{
     margin-top: 2%;
+   
+}
+
+.comment-section ul{
+    border-radius: var(--bs-border-radius);
+    padding: 1rem 0.5rem;
 }
 
 .comment-section li{
@@ -193,7 +199,12 @@ footer li, .comment-section li{
     text-decoration: none;
     background-color: var(--bs-list-group-bg);
     border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+    margin: 0 2%
   
+}
+
+.comment-section a{
+    color: var(--accent-color-1);
 }
 
 @media (max-width: 767.98px) { 

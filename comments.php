@@ -23,7 +23,7 @@
     // Comment Loop
     if ( $comments ) { ?>
         <section class="comment-section">
-            <ul class="list-group">
+            <ul>
                 <?php   wp_list_comments( [
                         'reverse_top_level' => true,
                         'style' => 'ul'
