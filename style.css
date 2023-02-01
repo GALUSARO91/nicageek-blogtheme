@@ -203,9 +203,6 @@ footer li, .comment-section li{
   
 }
 
-.comment-section a{
-    color: var(--accent-color-1);
-}
 
 @media (max-width: 767.98px) { 
     .searchbar{
