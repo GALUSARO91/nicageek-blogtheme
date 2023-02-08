@@ -1,0 +1,21 @@
+.rating-box-content label{ 
+    color:grey;
+}
+
+.rating-box-content input[type = "radio"]{ 
+    display:none;
+}
+
+.rating-box-content{
+    text-align: left;
+}
+
+.rating-box-content{
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+
+.rating-box-content label:hover, .rating-box-content label:hover ~ label, input[type="radio"]:checked ~ label{
+    color:orange;
+}

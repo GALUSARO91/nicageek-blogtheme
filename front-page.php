@@ -27,9 +27,7 @@
                             <h3><?php the_title();?></h3>
 
                             <div class="post-content">
-                                <?php
-                                    the_excerpt();
-                                ?>
+                                <?php the_excerpt();?>
                             </div>
                             <a class="see-more-link" href="<?php the_permalink() ;?>">See more...</a>
                         </article>       
@@ -42,11 +40,8 @@
                         <li class="page-item page-link" data-bs-target="#carouselLatestPosts" data-bs-slide="prev">   
                             <span aria-hidden="true">&laquo;</span>
                         </li>
-
                         <?php $latest_post_query->rewind_posts();?>
                         <?php while($latest_post_query->have_posts()){ $latest_post_query->the_post();?>
-
-
                         <li 
                             class="page-item page-link" 
                             data-bs-target="#carouselLatestPosts" 
@@ -67,9 +62,34 @@
     <section class="top-rated">
             <h2>Top Posts</h2>
             <ul>
-                <!-- TODO: Output top rated posts -->
+                <?php ;
+                    while ( have_posts() ) : the_post();
+                        $rating_var = get_post_meta(get_the_ID(),'ngbt-rating',true);
+                        $rating = calculate_rating($rating_var);
+                        if($rating >= 4){ ?>
+                            <li class="card mb-3">
+                            <a class="card-wrapper-link" href="<?php the_permalink() ;?>">
+                                <article class="row g-0">
+                                    <div class="col-md-4">
+                                        <?php the_post_thumbnail('full', ['class'=>'img-fluid rounded-start','alt'=>'post-image']);?>
+                                        
+                                    </div>
+                                    <div class="col-md-8 card-body">
+                                        <h3><?php the_title();?></h3>
+                                        <p class="card-text"><?php the_excerpt();?></p>
+                                        <div class="row">
+                                            <p class="col card-text"><small class="text-muted">Author: <?php the_author();?></small></p>
+                                            <p class="col card-text"><small class="text-muted">Date: <?php the_time("d/m/y")?></small></p>
+                                            <p class="col card-text"><small class="text-muted">Rating: <?php get_rating_template_part()?></small></p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </a>
+                <?php    }       
+                    endwhile;  ?>
             </ul>
     </section>
+    <?php wp_reset_postdata(); ?>
     <section class="all-posts">
         <h2>All Posts</h2>
         <ul>

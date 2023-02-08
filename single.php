@@ -4,10 +4,17 @@
 
 <?php if(have_posts()){ ?>
 
-    <section class="latest-post">
+ 
+     <section class="latest-post">
 
             <?php while(have_posts()){ the_post();?>
                 <h2><?php the_title();?></h2>
+                <div class="post-meta-info row">
+                    <?php
+                        get_rating_template_part();
+
+                    ?>
+                </div>
                         <article>
                             <div class="post-content py-3 my-3">
                                 <?php the_content();?>
