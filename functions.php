@@ -162,7 +162,7 @@ register_post_meta('post','ngbt-rating',$meta_args);
             }  
         
         } else{
-   
+            array_push($message,["msg" => "rating info updated"]);
             update_post_meta($request["post"],"ngbt-rating",serialize([$data_to_push]));
         }
 
