@@ -112,8 +112,8 @@
                 </a></li>
             <?php } ;?>
             <?php wp_reset_postdata(); ?>
-            <!-- TODO: Link to all posts info -->
         </ul>
+        <a href="<?php echo home_url('/?s=');?>" class="see-more-link">See all..</a>
     </section>
 
 <?php get_footer();?>

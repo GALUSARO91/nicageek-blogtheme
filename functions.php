@@ -115,8 +115,10 @@ register_post_meta('post','ngbt-rating',$meta_args);
  add_action('rest_api_init','ngbt_api_rating_route');
 
  function get_rating_template_part(){
+    /* 
+        render template with rating info
+    */
     $rating_var = get_post_meta(get_the_ID(),'ngbt-rating',true); 
-    error_log("rating var: ".$rating_var);
     $data = [
         "user_id" =>get_current_user_id(),
         "post_id" =>get_the_ID(),
@@ -127,6 +129,9 @@ register_post_meta('post','ngbt-rating',$meta_args);
  }
 
  function calculate_rating($rating){
+    /* 
+        @param $rating: is a serialized string containing all the rating data
+    */
     if($rating){
         $rating_array = unserialize($rating);
         $rating_values_array = array_column($rating_array,'rating');
@@ -136,6 +141,7 @@ register_post_meta('post','ngbt-rating',$meta_args);
  }
 
  function ngbt_post_rating($request){
+  
     try{
         $message =[];
         $found = false;
@@ -166,7 +172,7 @@ register_post_meta('post','ngbt-rating',$meta_args);
             update_post_meta($request["post"],"ngbt-rating",serialize([$data_to_push]));
         }
 
-        if(sizeof($message)> 1){
+        if(sizeof($message)> 0){
             array_push($message,["msg" => "rating info updated"]);
         }
         

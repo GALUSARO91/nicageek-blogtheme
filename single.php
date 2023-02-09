@@ -10,10 +10,13 @@
             <?php while(have_posts()){ the_post();?>
                 <h2><?php the_title();?></h2>
                 <div class="post-meta-info row">
-                    <?php
-                        get_rating_template_part();
-
-                    ?>
+                    <?php get_rating_template_part();?>
+                    <div class="col">
+                        Date:  <?php the_time("d/m/y")?>
+                    </div>
+                    <div class="col">
+                        Author: <?php the_author();?>
+                    </div>
                 </div>
                         <article>
                             <div class="post-content py-3 my-3">
