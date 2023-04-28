@@ -6,12 +6,17 @@ function ngbt_assets(){
     wp_enqueue_style("bootstrap","https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",array(),"5-3",'all');
     wp_enqueue_script("boostrap-js","https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js");
     wp_enqueue_style("ratingbox", get_stylesheet_directory_uri()."/assets/css/ratingbox.css",['google-font','bootstrap'] );
+    wp_register_style("404page", get_stylesheet_directory_uri()."/assets/css/404.css",[]);
     wp_register_script( "ratingbox-js", get_stylesheet_directory_uri()."/assets/js/ratingbox.js",[],null,true );
     if($wp_query->is_single){
         wp_localize_script("ratingbox-js",'ngbt' ,[
             'endpoint' => rest_url('ngbt'),
         ]);
         wp_enqueue_script('ratingbox-js');
+    }
+
+    if($wp_query->is_404){
+        wp_enqueue_style("404page");
     }
 }
 

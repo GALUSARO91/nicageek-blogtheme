@@ -36,9 +36,11 @@ p,li,input,button,a{
 
 
 body{
+    
     background-color: var(--background-light);
     color:var(--letter-dark)
 }
+
 
 header{
     background-color: var(--box-fill-dark);
@@ -91,6 +93,7 @@ nav{
 main{
     width: 80%;
     margin: 2% auto;
+    
 }
 section h2{
     display: block;

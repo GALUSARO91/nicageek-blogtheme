@@ -1,0 +1,36 @@
+/* 
+    CSS for the 404 page
+*/
+
+.ufo{
+    display: block;
+    width: 90%;
+    margin: 0 15%;
+    padding: 0 5%
+
+}
+
+.number4{
+    display: inline-block;
+    width: 15%;
+    margin: 0;
+    margin-top: -8%;
+}
+
+.main-ufo{
+    display: inline-block;
+    width: 70%;
+    max-height: 500px;
+    margin: 0 -14%
+    
+}
+
+.nofound{
+    width: 60%;
+    display: block;
+    margin: 0 18%;
+}
+
+.back-home::before{
+    content: url('/assets/img/Home.svg');
+}
