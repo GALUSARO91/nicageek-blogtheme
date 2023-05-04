@@ -162,23 +162,29 @@ register_post_meta('post','ngbt-rating',$meta_args);
 
                 if($item["user_id"] == $request["user_id"]){
                     $found = true;
-                    array_push($message,["msg" => "already voted"]);
+                    array_push($message,[
+                        "msg" => "already voted",
+                        "rating" => calculate_rating($rating_var),
+                    ]);
                     break;
                 }
             }
                 if(!$found){
                     array_push($unserialized_rating,$data_to_push);
                     update_post_meta($request["post"],"ngbt-rating",serialize($unserialized_rating));
+                    array_push($message,[
+                        "msg" => "rating info updated",
+                        "rating" => calculate_rating(serialize($unserialized_rating)),
+                    ]);
 
             }  
         
         } else{
-            array_push($message,["msg" => "rating info updated"]);
+            array_push($message,[
+                "msg" => "rating info updated",
+                "rating" => $request["rating"] ,
+            ]);
             update_post_meta($request["post"],"ngbt-rating",serialize([$data_to_push]));
-        }
-
-        if(sizeof($message)> 0){
-            array_push($message,["msg" => "rating info updated"]);
         }
         
         return $message;
