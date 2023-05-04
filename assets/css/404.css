@@ -34,3 +34,43 @@
 .back-home::before{
     content: url('/assets/img/Home.svg');
 }
+
+#grouped-ufo{
+    animation-name: rotate-ufo;
+    animation-duration: 1.5s;
+    
+}
+
+#descending-light ,.nofound{
+    visibility: hidden;
+    animation-name: show-light;
+    animation-duration: 0.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+
+
+@keyframes rotate-ufo {
+    from {
+        transform: translate(15rem , -20rem) scale(0.5) rotate(-20deg);
+        transform-origin: center;
+        
+    }
+
+    to {
+        transform: translate(0 , 0);
+        transform-origin: center;
+    }
+    
+}
+
+@keyframes show-light{
+    from{
+        visibility: hidden;
+    }
+
+    to{
+        visibility: visible;
+    }
+}
