@@ -216,6 +216,9 @@ footer li, .comment-section li{
   
 }
 
+#top-post-container:empty::after{
+    content: "No Top post found!!";
+}
 
 @media (max-width: 767.98px) { 
     .searchbar{

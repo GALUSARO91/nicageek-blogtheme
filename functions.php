@@ -194,3 +194,5 @@ register_post_meta('post','ngbt-rating',$meta_args);
     }
 
  }
+
+

@@ -9,7 +9,7 @@
             $lpargs = [
                 'posts_per_page' => 10,
                 'orderby' => 'date',
-                'order' => 'DESC'
+                'order' => 'DESC',
             ];
             $latest_post_query = new WP_Query($lpargs);
         ?>
@@ -61,32 +61,40 @@
     </section>
     <section class="top-rated">
             <h2>Top Posts</h2>
-            <ul>
-                <?php ;
-                    while ( have_posts() ) : the_post();
+            <ul id="top-post-container">
+                <?php
+                    $post_count = 0;
+                    while (have_posts() ) : the_post();
                         $rating_var = get_post_meta(get_the_ID(),'ngbt-rating',true);
                         $rating = calculate_rating($rating_var);
-                        if($rating >= 4){ ?>
+                        if($rating >= 4){ 
+                                $post_count++;
+                            ?>
                             <li class="card mb-3">
-                            <a class="card-wrapper-link" href="<?php the_permalink() ;?>">
-                                <article class="row g-0">
-                                    <div class="col-md-4">
-                                        <?php the_post_thumbnail('full', ['class'=>'img-fluid rounded-start','alt'=>'post-image']);?>
-                                        
-                                    </div>
-                                    <div class="col-md-8 card-body">
-                                        <h3><?php the_title();?></h3>
-                                        <p class="card-text"><?php the_excerpt();?></p>
-                                        <div class="row">
-                                            <p class="col card-text"><small class="text-muted">Author: <?php the_author();?></small></p>
-                                            <p class="col card-text"><small class="text-muted">Date: <?php the_time("d/m/y")?></small></p>
-                                            <p class="col card-text"><small class="text-muted">Rating: <?php get_rating_template_part()?></small></p>
+                                <a class="card-wrapper-link" href="<?php the_permalink() ;?>">
+                                    <article class="row g-0">
+                                        <div class="col-md-4">
+                                            <?php the_post_thumbnail('full', ['class'=>'img-fluid rounded-start','alt'=>'post-image']);?>
+                                            
                                         </div>
-                                    </div>
-                                </article>
-                            </a>
+                                        <div class="col-md-8 card-body">
+                                            <h3><?php the_title();?></h3>
+                                            <p class="card-text"><?php the_excerpt();?></p>
+                                            <div class="row">
+                                                <p class="col card-text"><small class="text-muted">Author: <?php the_author();?></small></p>
+                                                <p class="col card-text"><small class="text-muted">Date: <?php the_time("d/m/y")?></small></p>
+                                                <p class="col card-text"><small class="text-muted">Rating: <?php get_rating_template_part()?></small></p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </a>
+                            </li>
                 <?php    }       
-                    endwhile;  ?>
+                    endwhile;  
+                    if($post_count == 0){
+                        echo "<li>No posts found</li>";
+                    }
+                ?>
             </ul>
     </section>
     <?php wp_reset_postdata(); ?>
