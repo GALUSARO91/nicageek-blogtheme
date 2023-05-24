@@ -6,34 +6,26 @@
     <link rel="stylesheet" href="<?php echo esc_url( get_stylesheet_uri() ); ?>" type="text/css" />
     <?php wp_head();?>
     <title><?php wp_title( '|', true, 'right' ); ?></title>
-
+    <?php 
+        $header_options = ngbt_get_header_info(); 
+        if($header_options['header-type']!='small' && $header_options['header-mime'] =='image'){
+            echo '<style>
+                    #shrink-header{
+                    background-image: url("'.$header_options['header-src'].'")
+                    }
+            </style>';
+        }
+    ?>
 </head>
 <body>
-    <header class="navbar sticky-top navbar-expand-sm">
-        <nav class="container-fluid row">
-            <a href="<?php echo bloginfo('url');?>" class="site-logo navbar-brand col-3">
-                
-                    <div class="row">
-                        <img src="<?php echo ngbt_outputlogo(); ?>" alt="Site logo" class="col mw-">
-                        <h1 class ="site-title col"><?php bloginfo( 'name' ); ?></h1>
-                    </div>
-            </a>
-            <div class="searchbar col-3">
-                <?get_search_form();?>              
-            </div>
-            <div class="col-3">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>             
-                <?php wp_nav_menu( [
-                    "menu" => "menu-header",
-                    "container" => "",
-                    "menu_class" => "collapse navbar-collapse navbarnav",
-                    "menu_id" => "navbarNav",
-                    "link_before" =>'<span class="nav-link">',
-                    "link_after" => "</span>"
-                ] )?> 
-            </div>
-        </nav>
-    </header>
+    <?php 
+   
+        if($header_options['header-type']=='small'){
+            get_template_part( 'assets/template-parts/content', 'small-header');
+
+        } else{
+            get_template_part( 'assets/template-parts/content', 'big-header',$header_options);
+        } 
+        
+    ?>
     <main>

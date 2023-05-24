@@ -1,0 +1,48 @@
+
+header{
+    background-color: var(--box-fill-dark);
+    color: var(--letter-light)
+}
+
+nav{
+    justify-content: space-around;
+}
+
+.site-logo img{
+    max-height: 100px;
+    object-fit: scale-down;
+}
+
+.searchbar .btn-outline-success{
+    background-color: transparent;
+    color: var(--accent-color-1);
+    border: 1px solid var(--accent-color-1) ;
+}
+
+.searchbar .btn-outline-success:hover{
+    background-color: var(--accent-color-1);
+    color: var(--letter-light)
+}
+
+.navbarnav ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.navbarnav li{
+    display: inline-block;
+    list-style-type: none;
+    padding: 0 2%
+}
+.navbarnav a{
+    text-decoration: none !important;
+}
+#navbarNav .nav-link{
+    color: var(--letter-light) !important;
+}
+.site-title{
+    display: inline-block;
+}

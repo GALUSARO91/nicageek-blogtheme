@@ -1,6 +1,45 @@
 <?php
+
+
+function ngbt_get_header_info(){
+
+    $defaults = [
+        'header-type' => 'small',
+        'header-mime' => '',
+        'header-mimetype' => '',
+        'header-scr' => ''
+
+    ];
+
+    $found_mimetype;
+    $header_type = get_theme_mod('ngbt_header_setting')?get_theme_mod('ngbt_header_setting'):'';
+    $header_id = get_theme_mod('ngbt_big_header_bg_setting');
+    $header_link = wp_get_attachment_url($header_id);
+    $header_meta = wp_get_attachment_metadata($header_id)?wp_get_attachment_metadata($header_id):[];
+    if($header_meta){
+        array_walk_recursive($header_meta,function ($value,$key) use(&$found_mimetype){
+            if($key == 'mime_type' || $key == 'mime-type'){
+                $found_mimetype= $value;
+             }
+        },$found_mimetype);
+    
+    } 
+
+    $header_mime = isset($found_mimetype)?strtok($found_mimetype,'/'):"";
+    
+    $defaults['header-type'] = $header_type;
+    $defaults['header-mime'] = $header_mime;
+    $defaults['header-mimetype'] = $found_mimetype??'';
+    $defaults['header-src'] = $header_link?$header_link:'';
+
+        return $defaults;
+    }
+
+
+
 function ngbt_assets(){
     // register bootstrap and google fonts
+    $header_type = get_theme_mod('ngbt_header_setting');
     global $wp_query;
     wp_enqueue_style("google-font",'"https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=DynaPuff:wght@400;500;700&family=Quicksand:wght@300;400;500;700&display=swap',array(),false,'all');
     wp_enqueue_style("bootstrap","https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",array(),"5-3",'all');
@@ -8,6 +47,9 @@ function ngbt_assets(){
     wp_enqueue_style("ratingbox", get_stylesheet_directory_uri()."/assets/css/ratingbox.css",['google-font','bootstrap'] );
     wp_register_style("404page", get_stylesheet_directory_uri()."/assets/css/404.css",[]);
     wp_register_script( "ratingbox-js", get_stylesheet_directory_uri()."/assets/js/ratingbox.js",[],null,true );
+    wp_register_style( "small-header", get_stylesheet_directory_uri()."/assets/css/small-header.css",[] );
+    wp_register_style( "big-header", get_stylesheet_directory_uri()."/assets/css/big-header.css",[]);
+    wp_register_script("shrink-header", get_stylesheet_directory_uri()."/assets/js/shrinkheader.js",[],null,true);
     if($wp_query->is_single){
         wp_localize_script("ratingbox-js",'ngbt' ,[
             'endpoint' => rest_url('ngbt'),
@@ -17,6 +59,15 @@ function ngbt_assets(){
 
     if($wp_query->is_404){
         wp_enqueue_style("404page");
+    }
+
+    if($header_type == 'small'){
+        wp_enqueue_style("small-header");
+
+    } else {
+        wp_enqueue_style("big-header");
+        wp_enqueue_script('shrink-header');
+
     }
 }
 
@@ -34,7 +85,7 @@ function ngbt_register_theme_supports() {
     );
     add_theme_support("widgets");
  }
- add_action( 'customize_register', 'ngbt_register_theme_supports');
+ add_action( 'after_setup_theme', 'ngbt_register_theme_supports');
 
 function ngbt_add_edit_post_featured_image(){
     add_post_type_support('post', 'post-thumbnails');
@@ -194,5 +245,62 @@ register_post_meta('post','ngbt-rating',$meta_args);
     }
 
  }
+
+function ngbt_customize_register($wp_customize){
+    $wp_customize->add_panel( 'ngbt_header_panel', array(
+        'title' => "Header Options",
+        'description' => "Select your header type and other properties",
+        'capability' => 'edit_theme_options',
+        'priority' => 160,
+    ) );
+
+    $wp_customize->add_section( 'ngbt_header_section', array(
+        'title' => "Header Options",
+        'description' => "This could be either a small header or a big one",
+        'panel' => 'ngbt_header_panel',
+    ) );
+
+    $wp_customize->add_setting('ngbt_header_setting',array(
+        'title' => "Header Options",
+        'description' => "Select your header type",
+        'default' => 'Option 1'
+
+    ));
+
+
+    $wp_customize->add_control( 'ngbt_header_control', array(
+        'label' => "Header Control",
+        'section' => 'ngbt_header_section',
+        'settings'=>'ngbt_header_setting',
+        'type' => 'select',
+        'choices' => array(
+            'small' => 'Small',
+            'big' => 'Big'
+            ),
+    ) );
+
+
+    $wp_customize->add_setting('ngbt_big_header_bg_setting',array(
+        'default' => '',
+        'type'    => 'theme_mod',
+
+    ));
+
+    $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'ngbt_big_header_bg_setting', array(
+        'label'       => 'Big Header Background Option',
+        'description' => 'Select the media to add',
+        'section'     => 'ngbt_header_section',
+        'mime_type'   => 'image/video',
+        'active_callback' => function() use ( $wp_customize ) {
+            return $wp_customize->get_setting( 'ngbt_header_setting' )->value() === 'big';
+        },
+    ) ) );
+
+
+}
+add_action( 'customize_register', 'ngbt_customize_register' );
+
+
+
 
 

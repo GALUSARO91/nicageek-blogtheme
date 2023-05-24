@@ -1,0 +1,96 @@
+header{
+    background-color: var(--box-fill-dark);
+    color: var(--letter-light);
+    min-height: 80px;
+    height: 15%;
+    overflow: hidden;
+}
+
+#shrink-header{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+}
+
+#shrink-header video{
+    min-width: 100%;
+    position: absolute;
+    top: -30%;
+    left: 0;
+    z-index: -1
+}
+
+nav{
+    justify-content: space-around;
+}
+.site-logo{
+    text-align: center
+}
+.site-logo img{
+    max-height: 200px;
+    object-fit: scale-down;
+}
+
+.searchbar .btn-outline-success{
+    background-color: transparent;
+    color: var(--accent-color-1);
+    border: 1px solid var(--accent-color-1) ;
+}
+
+.searchbar .btn-outline-success:hover{
+    background-color: var(--accent-color-1);
+    color: var(--letter-light)
+}
+.navbar-toggler, .navbarnav li{
+    margin-left: 1rem;
+}
+.navbarnav ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.navbarnav li{
+
+    list-style-type: none;
+    padding: 0 2%
+}
+.navbarnav a{
+    text-decoration: none !important;
+}
+#navbarNav .nav-link{
+    color: var(--letter-light) !important;
+}
+.site-title{
+
+    text-align: center;
+    margin-top: 6%;
+}
+
+.site-title--hidden{
+    animation-name:  hide-title;        
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 50ms;
+}
+
+@keyframes hide-title {
+    from{
+        visibility: visible;
+        height: auto;
+        margin-top: 6%;
+
+    }
+
+    to{
+        visibility: hidden;
+        height: 0px;
+        margin: 0px;
+
+    }
+    
+}
