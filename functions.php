@@ -180,7 +180,7 @@ register_post_meta('post','ngbt-rating',$meta_args);
         "post_id" =>get_the_ID(),
         "rating_data" =>calculate_rating($rating_var)
     ];
-    get_template_part('assets/template-parts/content','ratingbox',$data);
+    get_template_part('template-parts/content','ratingbox',$data);
 
  }
 

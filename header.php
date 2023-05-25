@@ -21,10 +21,10 @@
     <?php 
    
         if($header_options['header-type']=='small'){
-            get_template_part( 'assets/template-parts/content', 'small-header');
+            get_template_part( '/template-parts/content', 'small-header');
 
         } else{
-            get_template_part( 'assets/template-parts/content', 'big-header',$header_options);
+            get_template_part( '/template-parts/content', 'big-header',$header_options);
         } 
         
     ?>
