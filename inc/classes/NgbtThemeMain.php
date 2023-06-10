@@ -14,7 +14,7 @@ class NgbtThemeMain {
 
     public  function init(){
         if(!isset($myself)){
-
+            // TODO: Create function logic
         }
 
     }
