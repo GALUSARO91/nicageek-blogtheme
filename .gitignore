@@ -3,9 +3,9 @@ nicageek-blogtheme.code-workspace
 header2.css
 .gitignore
 .phpcs.xml.dist
-./vendor
+/vendor
 .phpunit.result.cache
-./tests
+/tests
 ./bin
 .travis.yml
 functions2.php
