@@ -2,3 +2,10 @@
 nicageek-blogtheme.code-workspace
 header2.css
 .gitignore
+.phpcs.xml.dist
+./vendor
+.phpunit.result.cache
+./tests
+./bin
+.travis.yml
+functions2.php
