@@ -1,6 +1,6 @@
 <?php
 
-namespace Nicageek\Blogtheme\Classes;
+namespace Nicageek\Blogtheme\Classes\Functionalities;
 
 /* *
     * Class name:   Theme_Functionality

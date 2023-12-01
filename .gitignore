@@ -5,7 +5,6 @@ header2.css
 .phpcs.xml.dist
 /vendor
 .phpunit.result.cache
-/tests
 ./bin
 .travis.yml
 functions2.php

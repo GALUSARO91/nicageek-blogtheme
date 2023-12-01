@@ -12,5 +12,5 @@ abstract class Abstract_Theme_View {
         array_splice($this->template_parts,0,-1,$parts);
     }
 
-    abstract public function render(array $options = null):void;
+    abstract public function render($params =null):void;
 }

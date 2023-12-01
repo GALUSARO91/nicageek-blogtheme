@@ -10,7 +10,7 @@ require_once ABSPATH.'wp-includes/class-wp-customize-manager.php';
  * Theme Option Test.
  */
 
-use Nicageek\Blogtheme\Classes\Theme_Media_Option as ThOption;
+use Nicageek\Blogtheme\Classes\Options\Theme_Media_Option as ThOption;
 
 
 class ThemeOptionTest extends WP_UnitTestCase {

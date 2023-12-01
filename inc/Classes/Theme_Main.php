@@ -7,6 +7,7 @@ class Theme_Main {
     public $options =[];
     public $views =[];
     public $functionalities =[];
+    public $section_names = [];
     private static $instance ;
 
     private function __construct(){
@@ -22,7 +23,7 @@ class Theme_Main {
 
     public function setOptions($options){
 
-            if(isset($functionalities)&&!empty($functionalities)){
+            if(isset($options)&&!empty($options)){
                 foreach($options as $option){
                     array_push($this->options,$option);
             }
@@ -81,23 +82,37 @@ class Theme_Main {
     }
 
     public function registerAllOptions(){
-        
-        add_action('customize_register',function() use ($wp_customize){
-            // TODO: Registrar las opciones
-            $wp_customize->add_panel( 'ngbt_header_panel', array(
-                'title' => "Header Options",
-                'description' => "Select your header type and other properties",
+        global $wp_customize ;
+        add_action('customize_register',function() use (&$wp_customize){
+      
+            $wp_customize->add_panel( 'ngbt_theme_panel', array(
+                'title' => "Blogtheme Options",
+                'description' => "Here you can find theme customizations",
                 'capability' => 'edit_theme_options',
                 'priority' => 160,
             ) );
         
-            $wp_customize->add_section( 'ngbt_header_section', array(
-                'title' => "Header Options",
-                'description' => "This could be either a small header or a big one",
-                'panel' => 'ngbt_header_panel',
-            ) );
+           
 
+            if(!empty($this->section_names)){
+                foreach ($this->section_names as $item) {
+                    $wp_customize->add_section( $item['name'], array(
+                        'title' => $item['title'],
+                        'description' => $item['description'],
+                        'panel' => 'ngbt_theme_panel',
+                    ) );
+                }
+            }
 
+            if(!empty($this->options)){
+
+                foreach ($this->options as $opt) {
+                    $opt->Register_Option($wp_customize);
+                }
+
+            }
+
+                
         });
     }
 

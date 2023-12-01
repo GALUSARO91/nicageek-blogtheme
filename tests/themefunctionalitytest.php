@@ -2,7 +2,7 @@
 
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
-use Nicageek\Blogtheme\Classes\Theme_Functionality as TheFunc;
+use Nicageek\Blogtheme\Classes\Functionalities\Theme_Functionality as TheFunc;
 
 
 

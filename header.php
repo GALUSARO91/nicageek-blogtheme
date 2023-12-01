@@ -7,25 +7,25 @@
     <?php wp_head();?>
     <title><?php wp_title( '|', true, 'right' ); ?></title>
     <?php 
-        $header_options = ngbt_get_header_info(); 
-        if($header_options['header-type']!='small' && $header_options['header-mime'] =='image'){
-            echo '<style>
+        // $header_options = ngbt_get_header_info(); 
+        // if($header_options['header-type']!='small' && $header_options['header-mime'] =='image'){
+          /*   echo '<style>
                     #shrink-header{
                     background-image: url("'.$header_options['header-src'].'")
                     }
-            </style>';
-        }
+            </style>'; */
+        // }
     ?>
 </head>
 <body>
     <?php 
    
-        if($header_options['header-type']=='small'){
+        // if($header_options['header-type']=='small'){
             get_template_part( '/template-parts/content', 'small-header');
 
-        } else{
-            get_template_part( '/template-parts/content', 'big-header',$header_options);
-        } 
+        // } else{
+        //     get_template_part( '/template-parts/content', 'big-header',$header_options);
+        // } 
         
     ?>
     <main>

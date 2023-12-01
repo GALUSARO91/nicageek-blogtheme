@@ -1,13 +1,13 @@
 <?php
 
 namespace Nicageek\Blogtheme\Classes;
-use Nicageek\Blogtheme\Classes\Abstract_Theme_View;
+use Nicageek\Blogtheme\Classes\Views\Abstract_Theme_View;
 
 abstract class Theme_View_Header extends Abstract_Theme_View {
 
 
-    public function render(array $options):void{
-
+    public function render():void{
+        global $the_main;
         ob_start();
         ?>
         <!DOCTYPE html>

@@ -1,9 +1,10 @@
 <?php
 
 // Declare Theme funcionalities
-require_once dirname(__DIR__).'/vendor/autoload.php';
 
-use Nicageek\Blogtheme\Classes\Theme_Functionality as ThFunc;
+require_once get_stylesheet_directory().'/vendor/autoload.php';
+
+use Nicageek\Blogtheme\Classes\Functionalities\Theme_Functionality as ThFunc;
 
 /* 
 
@@ -177,3 +178,11 @@ $ng_theme_rating_box =  new ThFunc('ng_theme_rating_box _functionality',$theme_r
     End adding rating box functionality
 
 */
+
+$GLOBALS['the_main']->setFunctionalities([
+    $ng_theme_support,
+    $ng_theme_assets,
+    // $ng_theme_menu,
+    // $ng_theme_widgets,
+    // $ng_theme_rating_box,                  
+]);
