@@ -4,8 +4,8 @@
             <a href="<?php echo bloginfo('url');?>" class="site-logo navbar-brand col-3">
                 
                     <div class="row">
-                        <img src="<?php echo ngbt_outputlogo(); ?>" alt="Site logo" class="col mw-">
-                        <h1 class ="site-title col"><?php bloginfo( 'name' ); ?></h1>
+                        <img src="<?php echo $args['logo']; ?>" alt="Site logo" class="col mw-">
+                        <h1 class ="site-title col"><?php get_the_title(); ?></h1>
                     </div>
             </a>
             <div class="searchbar col-3">

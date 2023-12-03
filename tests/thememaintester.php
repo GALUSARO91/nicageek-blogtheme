@@ -4,6 +4,7 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 
 use Nicageek\Blogtheme\Classes\Theme_Main as TheMain;
 use Nicageek\Blogtheme\Classes\Functionalities\Theme_Functionality as ThFunc;
+
 use Nicageek\Blogtheme\Classes\Views\Theme_View_Header as ThView;
 // use \Exceptions;
 class thememaintester extends WP_UnitTestCase {
@@ -46,6 +47,7 @@ class thememaintester extends WP_UnitTestCase {
 
         $this->assertInstanceOf(ThFunc::class,$thememain->functionalities[0]);
         $this->assertInstanceOf(ThFunc::class,$thememain->functionalities[0]);
+
         
 
     }

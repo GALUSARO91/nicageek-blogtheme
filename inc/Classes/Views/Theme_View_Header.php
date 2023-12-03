@@ -1,12 +1,12 @@
 <?php
 
-namespace Nicageek\Blogtheme\Classes;
+namespace Nicageek\Blogtheme\Classes\Views;
 use Nicageek\Blogtheme\Classes\Views\Abstract_Theme_View;
 
-abstract class Theme_View_Header extends Abstract_Theme_View {
+Class Theme_View_Header extends Abstract_Theme_View {
 
 
-    public function render():void{
+    public function render($params = null):void{
         global $the_main;
         ob_start();
         ?>
@@ -19,8 +19,29 @@ abstract class Theme_View_Header extends Abstract_Theme_View {
             <?php wp_head();?>
             <title><?php wp_title( '|', true, 'right' ); ?></title>
             <?php 
-                $options = ngbt_get_header_info(); 
-                if($header_options['header-type']!='small' && $options['header-mime'] =='image'){
+                $found_mimetype;
+                $header_id = $the_main->getChildByNameAndType('ngbt_big_header_bg_setting','option')->get_value();
+                $header_link = wp_get_attachment_url($header_id);
+                $header_meta = wp_get_attachment_metadata($header_id)?wp_get_attachment_metadata($header_id):[];
+                if($header_meta){
+                    array_walk_recursive($header_meta,function ($value,$key) use(&$found_mimetype){
+                        if($key == 'mime_type' || $key == 'mime-type'){
+                            $found_mimetype= $value;
+                         }
+                    },$found_mimetype);
+                
+                } 
+                $header_mime = isset($found_mimetype)?strtok($found_mimetype,'/'):"";
+
+                $options = [
+                    'header-type' => $the_main->getChildByNameAndType('ngbt_header_setting','option'),
+                    'header-mime' => $header_mime,
+                    'header-mimetype' => $found_mimetype??'',
+                    'header-scr' => $header_link?$header_link:''
+            
+                ]; 
+                
+                if($options['header-type']!='small' && $options['header-mime'] =='image'){
                     echo '<style>
                             #shrink-header{
                             background-image: url("'.$options['header-src'].'")
@@ -32,12 +53,14 @@ abstract class Theme_View_Header extends Abstract_Theme_View {
         <body>
             <?php 
            
-                if($header_options['header-type']=='big'){
-                    get_template_part( '/template-parts/content', 'big-header',$header_options);
+                if($options['header-type']=='big'){
+
+                    $this->get_view_part('big-header')->render($options);
+                  
         
                 } else{
-                    
-                    get_template_part( '/template-parts/content', 'small-header');
+                    $view_part= $this->get_view_part('small-header');
+                    $view_part->render();
                 } 
                 
             ?>

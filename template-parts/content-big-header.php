@@ -25,7 +25,7 @@
                     <a href="<?php echo bloginfo('url');?>" class="site-logo navbar-brand col-3">
                         
                         <div class="row">
-                            <img src="<?php echo ngbt_outputlogo(); ?>" alt="Site logo" class="col mw-">
+                            <img src="<?php echo $args['logo']; ?>" alt="Site logo" class="col mw-">
                         </div>
                 </a>
             </div>

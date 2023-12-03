@@ -7,8 +7,6 @@ use Nicageek\Blogtheme\Classes\Options\Theme_Media_Option as ThMOpt;
 
 use Nicageek\Blogtheme\Classes\Options\Theme_NO_Media_Option  as ThNoMOpt;
 
-// global $wp_customize;
-
 
 
 $header_args = [
@@ -53,6 +51,7 @@ $big_header_args = [
 ];
 
 $ng_big_header_option = new ThMOpt($big_header_args);
+
 
 $GLOBALS['the_main']->setOptions([
     $ng_header_option,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nicageek\Blogtheme\Classes;
+namespace Nicageek\Blogtheme\Classes\Views;
 
 abstract class Abstract_Theme_View {
 
@@ -13,4 +13,15 @@ abstract class Abstract_Theme_View {
     }
 
     abstract public function render($params =null):void;
+
+    public function get_view_part($name = null ){
+        $found = array_filter($this->template_parts,function($part)use($name){
+            if($part->template_name == $name){
+                return true;
+            }
+            
+        });
+        $return = array_values($found);
+        return $return[0];
+    }
 }

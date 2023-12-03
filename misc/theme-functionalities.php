@@ -182,7 +182,7 @@ $ng_theme_rating_box =  new ThFunc('ng_theme_rating_box _functionality',$theme_r
 $GLOBALS['the_main']->setFunctionalities([
     $ng_theme_support,
     $ng_theme_assets,
-    // $ng_theme_menu,
-    // $ng_theme_widgets,
-    // $ng_theme_rating_box,                  
+    $ng_theme_menu,
+    $ng_theme_widgets,
+    $ng_theme_rating_box,                  
 ]);

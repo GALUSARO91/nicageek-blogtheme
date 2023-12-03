@@ -19,8 +19,11 @@ $GLOBALS['the_main'] = $theme_main;
 
 require_once get_stylesheet_directory().'/misc/theme-functionalities.php';
 require_once get_stylesheet_directory().'/misc/theme-options.php';
+require_once get_stylesheet_directory().'/misc/theme-views.php';
 
 
 $GLOBALS['the_main']->registerAllOptions();
 
 $GLOBALS['the_main']->activateAllFunctionalities();
+
+

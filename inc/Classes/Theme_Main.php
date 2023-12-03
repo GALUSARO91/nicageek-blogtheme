@@ -48,7 +48,7 @@ class Theme_Main {
     public function setViews($views){
         if(isset($views)&&!empty($views)){
             foreach($views as $view){
-                array_push($this->views,$views);
+                array_push($this->views,$view);
 
             };
         }
@@ -152,6 +152,7 @@ class Theme_Main {
                         return true;
                     }
             });
+                
 
                 break;
 
@@ -161,7 +162,8 @@ class Theme_Main {
         }
 
         if(sizeof($found)==1){
-            return $found[0];
+            $return = array_values($found);
+            return $return[0];
         }
 
     }
