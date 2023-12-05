@@ -36,11 +36,11 @@ Class Theme_View_Header extends Abstract_Theme_View {
                     'header-type' => $the_main->getChildByNameAndType('ngbt_header_setting','option')->get_value(),
                     'header-mime' => $header_mime,
                     'header-mimetype' => $found_mimetype??'',
-                    'header-scr' => $header_link?$header_link:''
+                    'header-src' => $header_link?$header_link:''
             
                 ]; 
                 
-                if($options['header-type']!='small' && $options['header-mime'] =='image'){
+                if($options['header-type']!=0 && $options['header-mime'] =='image'){
                     echo '<style>
                             #shrink-header{
                             background-image: url("'.$options['header-src'].'")
@@ -52,7 +52,7 @@ Class Theme_View_Header extends Abstract_Theme_View {
         <body>
             <?php 
            
-                if($options['header-type']=='big'){
+                if($options['header-type']==1){
 
                     $this->get_view_part('big-header')->render($options);
                   

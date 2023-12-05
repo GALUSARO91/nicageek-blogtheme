@@ -94,8 +94,6 @@ $ng_theme_menu =  new ThFunc('ng_theme_menu_functionality',$theme_menu_args);
     End adding theme menu
 
 */
-
-
 /* 
     Begin adding theme footer widgets
 
@@ -153,8 +151,6 @@ $ng_theme_widgets =  new ThFunc('ng_theme_widgets_functionality',$theme_widgets_
     End adding theme footer widgets
 
 */
-
-
 /* 
     Begin adding rating box functionality
 
@@ -275,7 +271,7 @@ $small_header_routine =  function(){
     wp_register_style( "small-header", get_stylesheet_directory_uri()."/assets/css/small-header.css",[] );
     
     $header_type = $the_main->getChildByNameAndType('ngbt_header_setting','option')->get_value();
-    if($header_type == 1){
+    if($header_type == 0){
         wp_enqueue_style("small-header");
 
     }
@@ -303,7 +299,7 @@ $big_header_routine =  function(){
     wp_register_style( "big-header", get_stylesheet_directory_uri()."/assets/css/big-header.css",[]);
     wp_register_script("shrink-header", get_stylesheet_directory_uri()."/assets/js/shrinkheader.js",[],null,true);
     $header_type = $the_main->getChildByNameAndType('ngbt_header_setting','option')->get_value();
-    if($header_type == 2){
+    if($header_type == 1){
         wp_enqueue_style("big-header");
         wp_enqueue_script('shrink-header');
     }
