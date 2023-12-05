@@ -5,6 +5,7 @@
 require_once get_stylesheet_directory().'/vendor/autoload.php';
 
 use Nicageek\Blogtheme\Classes\Functionalities\Theme_Functionality as ThFunc;
+use Nicageek\Blogtheme\Classes\Functionalities\Theme_Functionality_Rating as ThFRating;
 
 
 /* 
@@ -187,7 +188,7 @@ $ng_theme_rating_box =  new ThFunc('ng_theme_rating_box_functionality',$theme_ra
 */
 
 function ngbt_post_rating($request){
-  
+    global $the_main;
     try{
         $message =[];
         $found = false;
@@ -205,7 +206,7 @@ function ngbt_post_rating($request){
                     $found = true;
                     array_push($message,[
                         "msg" => "already voted",
-                        "rating" => calculate_rating($rating_var),
+                        "rating" => $the_main->getChildByNameAndType('ng_theme_rating_box_api_functionality','functionality')->calculate_rating($rating_var),
                     ]);
                     break;
                 }
@@ -215,7 +216,7 @@ function ngbt_post_rating($request){
                     update_post_meta($request["post"],"ngbt-rating",serialize($unserialized_rating));
                     array_push($message,[
                         "msg" => "rating info updated",
-                        "rating" => calculate_rating(serialize($unserialized_rating)),
+                        "rating" => $the_main->getChildByNameAndType('ng_theme_rating_box_api_functionality','functionality')->calculate_rating(serialize($unserialized_rating)),
                     ]);
 
             }  
@@ -254,7 +255,7 @@ function ngbt_post_rating($request){
     'feature-func'  => $rating_box_api_routine
 ];
 
-$ng_theme_rating_box_api = new ThFunc('ng_theme_rating_box_api_functionality',$theme_rating_box_api_args);
+$ng_theme_rating_box_api = new ThFRating('ng_theme_rating_box_api_functionality',$theme_rating_box_api_args);
 
 /* 
     End adding rating box api functionality

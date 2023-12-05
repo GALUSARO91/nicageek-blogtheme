@@ -12,7 +12,7 @@ use Nicageek\Blogtheme\Classes\Views\Theme_View_Home_Page as ThVwHomePage;
 use Nicageek\Blogtheme\Classes\Views\Theme_View_Page as ThVwPage;
 use Nicageek\Blogtheme\Classes\Views\Theme_View_Index_Page as ThVwIndexPage;
 use Nicageek\Blogtheme\Classes\Views\Theme_View_Single_Page as ThVwSingle;
-
+use Nicageek\Blogtheme\Classes\Views\Theme_View_404 as ThVw404;
 /* 
     Begin adding header template
 */
@@ -77,7 +77,7 @@ $ngbt_page = new ThVwPage('ngbt-page');
 $ngbt_index_page = new ThVwIndexPage('ngbt-index');
 
 /* 
-    Stop adding Single template
+    Stop adding index template
 
     Begin adding Single template
 */
@@ -86,6 +86,17 @@ $ngbt_single_page =new ThVwSingle('ngbt-single',[
     $ngbt_rating
 ]);
 
+/* 
+    Stop adding Single template
+
+    Begin adding 404 template
+*/
+$ngbt_404 = new ThVw404('ngbt-404');
+
+/* 
+    Stop adding 404 template
+*/
+
 $GLOBALS['theme_main']->setViews([
     $ngbt_header,
     $ngbt_footer,
@@ -93,5 +104,6 @@ $GLOBALS['theme_main']->setViews([
     $ngbt_home_page,
     $ngbt_page,
     $ngbt_index_page,
-    $ngbt_single_page
+    $ngbt_single_page,
+    $ngbt_404
 ]);
