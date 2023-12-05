@@ -1,14 +1,12 @@
 <?php
 
-namespace Nicageek\Blogtheme\Classes;
-use Nicageek\Blogtheme\Classes\Abstract_Theme_View;
+namespace Nicageek\Blogtheme\Classes\Views;
+use Nicageek\Blogtheme\Classes\Views\Abstract_Theme_View;
 
-abstract class Theme_View_Header extends Abstract_Theme_View {
+Class Theme_View_Footer extends Abstract_Theme_View {
 
 
-    public function render(array $options = null):void{
-
-        ob_start();
+    public function render($params = null):void{
         ?>
        </main> 
         <footer>
@@ -31,8 +29,5 @@ abstract class Theme_View_Header extends Abstract_Theme_View {
     </body>
 </html>
        <?php
-        
-        echo  ob_clean();
-    
     }
 }

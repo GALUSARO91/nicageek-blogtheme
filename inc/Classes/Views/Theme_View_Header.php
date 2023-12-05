@@ -8,7 +8,6 @@ Class Theme_View_Header extends Abstract_Theme_View {
 
     public function render($params = null):void{
         global $the_main;
-        ob_start();
         ?>
         <!DOCTYPE html>
         <html <?php language_attributes();?>>
@@ -34,7 +33,7 @@ Class Theme_View_Header extends Abstract_Theme_View {
                 $header_mime = isset($found_mimetype)?strtok($found_mimetype,'/'):"";
 
                 $options = [
-                    'header-type' => $the_main->getChildByNameAndType('ngbt_header_setting','option'),
+                    'header-type' => $the_main->getChildByNameAndType('ngbt_header_setting','option')->get_value(),
                     'header-mime' => $header_mime,
                     'header-mimetype' => $found_mimetype??'',
                     'header-scr' => $header_link?$header_link:''
@@ -68,7 +67,6 @@ Class Theme_View_Header extends Abstract_Theme_View {
 
        <?php
         
-        echo  ob_clean();
     
     }
 }
