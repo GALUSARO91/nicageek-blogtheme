@@ -25,7 +25,7 @@ class Theme_No_Media_Option extends Theme_Option implements Register_Option{
                     'label' => $this->option_control_label,
                     'section' => $this->option_section,
                     'settings' => array($this->option_name),
-                    'type' => $this->option_type,
+                    'type' => $this->option_control_type,
                     'choices' => $this->option_possible_values
 
                 ]);

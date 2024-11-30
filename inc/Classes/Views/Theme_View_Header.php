@@ -36,17 +36,35 @@ Class Theme_View_Header extends Abstract_Theme_View {
                     'header-type' => $the_main->getChildByNameAndType('ngbt_header_setting','option')->get_value(),
                     'header-mime' => $header_mime,
                     'header-mimetype' => $found_mimetype??'',
-                    'header-src' => $header_link?$header_link:''
-            
+                    'header-src' => $header_link?$header_link:'',
+                    'header-color' => $the_main->getChildByNameAndType('ngbt_sm_header_bg_setting','option')->get_value(),
+                    
                 ]; 
                 
                 if($options['header-type']!=0 && $options['header-mime'] =='image'){
                     echo '<style>
                             #shrink-header{
-                            background-image: url("'.$options['header-src'].'")
+                             background-image: url("'.$options['header-src'].'")
+                            }
+                    </style>';
+                } else {
+                    echo '<style>
+                            header{
+                                background-color:'.$options['header-color'].'
                             }
                     </style>';
                 }
+                $header_font_color = $the_main->getChildByNameAndType('ngbt_header_font_color_setting','option')->get_value();
+                $header_link_color = $the_main->getChildByNameAndType('ngbt_header_link_font_color_setting','option')->get_value();
+
+                echo "<style>
+                    .site-title{
+                        color: $header_font_color;
+                        }
+                    #navbarNav .nav-link{
+                        color: $header_link_color !important
+                    }
+                </style>"
             ?>
         </head>
         <body>

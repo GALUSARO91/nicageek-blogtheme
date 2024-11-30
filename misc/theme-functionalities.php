@@ -319,6 +319,7 @@ $ng_theme_big_header = new ThFunc('ngbt_big_header',[
 
 */
 
+
 $GLOBALS['the_main']->setFunctionalities([
     $ng_theme_support,
     $ng_theme_assets,
@@ -327,6 +328,6 @@ $GLOBALS['the_main']->setFunctionalities([
     $ng_theme_rating_box,
     $ng_theme_rating_box_api,
     $ng_theme_small_header,
-    $ng_theme_big_header
+    $ng_theme_big_header,
 
 ]);

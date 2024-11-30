@@ -1,6 +1,6 @@
 
 header{
-    background-color: var(--box-fill-dark);
+    /* background-color: var(--box-fill-dark); */
     color: var(--letter-light)
 }
 
@@ -40,9 +40,7 @@ nav{
 .navbarnav a{
     text-decoration: none !important;
 }
-#navbarNav .nav-link{
-    color: var(--letter-light) !important;
-}
+
 .site-title{
     display: inline-block;
 }

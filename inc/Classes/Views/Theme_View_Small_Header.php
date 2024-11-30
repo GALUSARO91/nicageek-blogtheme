@@ -9,8 +9,8 @@ Class Theme_View_Small_Header extends Abstract_Theme_View {
 
     public function render($params = null):void{
        
-        $logo_url = $this->ngbt_outputlogo();
-        get_template_part('/template-parts/content', $this->template_name, ['logo' => $logo_url]);
+        $params['logo'] = $this->ngbt_outputlogo();
+        get_template_part('/template-parts/content', $this->template_name, $params);
 
     }
 

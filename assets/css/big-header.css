@@ -1,5 +1,5 @@
 header{
-    background-color: var(--box-fill-dark);
+    /* background-color: var(--box-fill-dark); */
     color: var(--letter-light);
     min-height: 80px;
     height: 15%;

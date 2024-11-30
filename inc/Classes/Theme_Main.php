@@ -89,7 +89,7 @@ class Theme_Main {
                 'title' => "Blogtheme Options",
                 'description' => "Here you can find theme customizations",
                 'capability' => 'edit_theme_options',
-                'priority' => 160,
+                'priority' => 80,
             ) );
         
            
