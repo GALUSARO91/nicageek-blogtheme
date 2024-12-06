@@ -18,7 +18,7 @@
                 </div>
             
                     
-                    <div class="searchbar col-3">
+                    <div class="searchbar col-3" id="search-form">
                         <?get_search_form();?>              
                     </div>
 

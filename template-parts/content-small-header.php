@@ -8,7 +8,7 @@
                         <h1 class ="site-title col"><?php bloginfo( 'name' ); ?></h1>
                     </div>
             </a>
-            <div class="searchbar col-3">
+            <div class="searchbar col-3" id="search-form"> 
                 <?get_search_form();?>              
             </div>
             <div class="col-3">

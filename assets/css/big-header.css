@@ -32,16 +32,16 @@ nav{
     object-fit: scale-down;
 }
 
-.searchbar .btn-outline-success{
+/* .searchbar .btn-outline-success{
     background-color: transparent;
-    color: var(--accent-color-1);
-    border: 1px solid var(--accent-color-1) ;
+    color: var(--custom-color);
+    border: 1px solid var(--custom-color)) ;
 }
 
 .searchbar .btn-outline-success:hover{
-    background-color: var(--accent-color-1);
+    background-color: var(--custom-color);
     color: var(--letter-light)
-}
+} */
 .navbar-toggler, .navbarnav li{
     margin-left: 1rem;
 }

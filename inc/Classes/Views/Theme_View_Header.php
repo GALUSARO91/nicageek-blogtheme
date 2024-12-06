@@ -40,6 +40,8 @@ Class Theme_View_Header extends Abstract_Theme_View {
                     'header-color' => $the_main->getChildByNameAndType('ngbt_sm_header_bg_setting','option')->get_value(),
                     
                 ]; 
+
+                $search_button_color = $the_main->getChildByNameAndType('ngbt_search_button_color_setting','option')->get_value();
                 
                 if($options['header-type']!=0 && $options['header-mime'] =='image'){
                     echo '<style>
@@ -58,6 +60,10 @@ Class Theme_View_Header extends Abstract_Theme_View {
                 $header_link_color = $the_main->getChildByNameAndType('ngbt_header_link_font_color_setting','option')->get_value();
 
                 echo "<style>
+                    :root { 
+                        --custom-color: $search_button_color;
+                    
+                    }
                     .site-title{
                         color: $header_font_color;
                         }

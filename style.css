@@ -41,7 +41,17 @@ body{
     color:var(--letter-dark)
 }
 
+.searchbar .btn-outline-success{
+    background-color: transparent;
+    color: var(--custom-color);
+    border: 1px solid var(--custom-color) ;
+}
 
+.searchbar .btn-outline-success:hover{
+    background-color: var(--custom-color);
+    color: var(--letter-light);
+    border-color: var(--custom-color)
+}
 main{
     width: 80%;
     margin: 2% auto;

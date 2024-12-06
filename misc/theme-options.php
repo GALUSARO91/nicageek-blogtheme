@@ -131,10 +131,35 @@ $header_link_font_color_args=[
 $ng_header_link_font_color_option = new ThCOpt($header_link_font_color_args);
 
 
+/* Set Search button Color Options */
+
+$search_button_color_args=[
+
+    'option_name' => 'ngbt_search_button_color_setting',
+    'option_control_type' => 'color',
+    'option_current_value' => '#548687',
+    'option_possible_values'=>[],
+    'option_title' => 'Search button Color',
+    'option_description' => 'Select Search button Color',
+    'option_section' => 'ngbt_header_section',
+    'option_control_name' => 'ngbt_search_button_color_control',
+    'option_control_label' => 'Search button Color',
+    'option_control_callback' =>function(){
+
+        return true;
+    }, 
+
+];
+
+$ng_search_button_color_option = new ThCOpt($search_button_color_args);
+
+/* End Search button Color Options */
+
 $GLOBALS['the_main']->setOptions([
     $ng_header_option,
     $ng_big_header_option,
     $ng_small_header_option,
     $ng_header_font_color_option,
-    $ng_header_link_font_color_option
+    $ng_header_link_font_color_option,
+    $ng_search_button_color_option
 ]);
